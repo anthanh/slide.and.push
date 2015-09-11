@@ -4,6 +4,9 @@ angular.module("slidePushMenu", []).factory('slidePush',function () {
     spmenuHorizontalHeight = 150;
     return {
         slide: function (menu, btn) {
+            if (btn.hasClass('ng-slide-menu-ignore')) {
+                return;
+            }
             btn.toggleClass("active");
             if (menu.hasClass("spmenu-left")) {
                 if (menu.hasClass("spmenu-open")) {
@@ -54,6 +57,9 @@ angular.module("slidePushMenu", []).factory('slidePush',function () {
             }
         },
         push: function (menu, btn) {
+            if (btn.hasClass('ng-slide-menu-ignore')) {
+                return;
+            }
             var body, bodyLeft, bodyTop;
             body = angular.element("body");
             btn.toggleClass("active");

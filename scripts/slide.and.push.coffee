@@ -5,6 +5,8 @@ angular.module("slidePushMenu", []).factory("slidePush", [->
   spmenuHorizontalHeight = 150
   slide: (menu, btn) ->
     btn.toggleClass "active"
+    if btn.hasClass('ng-slide-menu-ignore')
+        return
     if menu.hasClass("spmenu-left")
       if menu.hasClass("spmenu-open")
         menu.css "left", parseInt(menu.css("left")) - spmenuVerticalWidth
@@ -41,6 +43,8 @@ angular.module("slidePushMenu", []).factory("slidePush", [->
     bodyLeft = undefined
     bodyTop = undefined
     body = angular.element(document.querySelector("body"))
+    if btn.hasClass('ng-slide-menu-ignore')
+        return
     btn.toggleClass "active"
     if menu.hasClass("spmenu-left")
       bodyLeft = parseInt(body.css("left"))
